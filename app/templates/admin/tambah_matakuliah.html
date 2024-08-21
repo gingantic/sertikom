@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Mata Kuliah{% endblock %}
+
+{% block content %}
+<div class="container px-6 mx-auto grid">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Tambah Mata Kuliah
+    </h2>
+
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <form method="POST">
+            <div class="mb-4">
+                <label for="kode" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Kode Mata Kuliah</label>
+                <input type="text" name="kode" id="kode" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+            </div>
+
+            <div class="mb-4">
+                <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Nama Mata Kuliah</label>
+                <input type="text" name="nama" id="nama" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+            </div>
+
+            <div class="mb-4">
+                <label for="sks" class="block text-sm font-medium text-gray-700 dark:text-gray-400">SKS</label>
+                <input type="number" name="sks" id="sks" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+            </div>
+
+            <div class="mb-4">
+                <label for="semester" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Semester</label>
+                <select name="semester" id="semester" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="dosen_id" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Dosen Pengampu</label>
+                <select name="dosen_id" id="dosen_id" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    {% for dosen in dosen_list %}
+                        <option value="{{ dosen.id }}">{{ dosen.nama }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="flex mt-6 text-sm">
+                <button type="submit" class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    Tambah Mata Kuliah
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

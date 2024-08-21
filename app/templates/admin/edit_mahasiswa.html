@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Mahasiswa{% endblock %}
+
+{% block content %}
+<div class="container px-6 mx-auto grid">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Edit Mahasiswa
+    </h2>
+
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <form method="POST">
+            <div class="mb-4">
+                <label for="nim" class="block text-sm font-medium text-gray-700 dark:text-gray-400">NIM</label>
+                <input type="text" name="nim" id="nim" value="{{ mahasiswa.nim }}" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input p-2">
+            </div>
+            
+            <div class="mb-4">
+                <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Nama</label>
+                <input type="text" name="nama" id="nama" value="{{ mahasiswa.nama }}" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input p-2">
+            </div>
+            
+            <div class="mb-4">
+                <label for="tanggal_lahir" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Tanggal Lahir</label>
+                <input type="date" name="tanggal_lahir" id="tanggal_lahir" value="{{ mahasiswa.tanggal_lahir }}" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input p-2">
+            </div>
+            
+            <div class="mb-4">
+                <label for="jenis_kelamin" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Jenis Kelamin</label>
+                <select name="jenis_kelamin" id="jenis_kelamin" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-select p-2">
+                    <option value="pria" {% if mahasiswa.jenis_kelamin == 'pria' %}selected{% endif %}>Pria</option>
+                    <option value="wanita" {% if mahasiswa.jenis_kelamin == 'wanita' %}selected{% endif %}>Wanita</option>
+                </select>
+            </div>
+            
+            <div class="mb-4">
+                <label for="alamat" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Alamat</label>
+                <textarea name="alamat" id="alamat" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-textarea p-2">{{ mahasiswa.alamat }}</textarea>
+            </div>
+            
+            <div class="mb-4">
+                <label for="nomor_telepon" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Nomor Telepon</label>
+                <input type="text" name="nomor_telepon" id="nomor_telepon" value="{{ mahasiswa.nomor_telepon }}" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input p-2">
+            </div>
+
+            <div class="mb-4">
+                <label for="tahun_masuk" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Nomor Telepon</label>
+                <input type="text" name="tahun_masuk" id="tahun_masuk" value="{{ mahasiswa.tahun_masuk }}" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input p-2">
+            </div>
+            
+            <!-- <div class="mb-4">
+                <label for="program_studi" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Program Studi</label>
+                <select name="program_studi" id="program_studi" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-select p-2">
+                    <option value="informatika" {% if mahasiswa.program_studi == 'informatika' %}selected{% endif %}>Informatika</option>
+                    <option value="sistem_informasi" {% if mahasiswa.program_studi == 'sistem_informasi' %}selected{% endif %}>Sistem Informasi</option>
+                    Tambahkan program studi lain sesuai kebutuhan
+                </select>
+            </div> -->
+            
+            <div class="flex mt-6 text-sm">
+                <button type="submit" class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    Edit Mahasiswa
+                </button>
+                <a href="{{ url_for('admin.manage_mahasiswa') }}" class="ml-4 px-5 py-3 font-medium leading-5 text-gray-700 dark:text-gray-400 transition-colors duration-150 border border-gray-300 rounded-lg active:bg-gray-300 hover:bg-gray-100 dark:bg-gray-800 focus:outline-none focus:shadow-outline-gray">
+                    Batal
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

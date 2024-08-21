@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Pendaftaran{% endblock %}
+
+{% block content %}
+<div class="container px-6 mx-auto grid">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Tambah Pendaftaran
+    </h2>
+
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <form method="POST">
+            <div class="mb-4">
+                <label for="mahasiswa_id" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Mahasiswa</label>
+                <select name="mahasiswa_id" id="mahasiswa_id" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    {% for mahasiswa in mahasiswa_list %}
+                        <option value="{{ mahasiswa.id }}">{{ mahasiswa.nama }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="mata_kuliah_id" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Mata Kuliah</label>
+                <select name="mata_kuliah_id" id="mata_kuliah_id" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    {% for mata_kuliah in matakuliah_list %}
+                        <option value="{{ mata_kuliah.id }}">{{ mata_kuliah.nama }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="nilai_akhir" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Nilai Akhir</label>
+                <input type="text" name="nilai_akhir" id="nilai_akhir" class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+            </div>
+
+            <div class="mb-4">
+                <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Status</label>
+                <select name="status" id="status" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    <option value="aktif">Aktif</option>
+                    <option value="selesai">Selesai</option>
+                    <option value="batal">Batal</option>
+                </select>
+            </div>
+
+            <div class="flex mt-6 text-sm">
+                <button type="submit" class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    Tambah Pendaftaran
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

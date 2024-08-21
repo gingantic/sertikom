@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Pendaftaran{% endblock %}
+
+{% block content %}
+<div class="container px-6 mx-auto grid">
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Edit Pendaftaran
+    </h2>
+
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <form method="POST">
+            <div class="mb-4">
+                <label for="mahasiswa_id" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Mahasiswa</label>
+                <select name="mahasiswa_id" id="mahasiswa_id" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    {% for mahasiswa in mahasiswa_list %}
+                        <option value="{{ mahasiswa.id }}" {% if pendaftaran.mahasiswa_id == mahasiswa.id %}selected{% endif %}>{{ mahasiswa.nama }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="mata_kuliah_id" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Mata Kuliah</label>
+                <select name="mata_kuliah_id" id="mata_kuliah_id" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    {% for mata_kuliah in matakuliah_list %}
+                        <option value="{{ mata_kuliah.id }}" {% if pendaftaran.mata_kuliah_id == mata_kuliah.id %}selected{% endif %}>{{ mata_kuliah.nama }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="nilai_akhir" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Nilai Akhir</label>
+                <input type="text" name="nilai_akhir" id="nilai_akhir" value="{{ pendaftaran.nilai_akhir }}" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+            </div>
+
+            <div class="mb-4">
+                <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-400">Status</label>
+                <select name="status" id="status" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300">
+                    <option value="aktif" {% if pendaftaran.status == 'aktif' %}selected{% endif %}>Aktif</option>
+                    <option value="selesai" {% if pendaftaran.status == 'selesai' %}selected{% endif %}>Selesai</option>
+                    <option value="batal" {% if pendaftaran.status == 'batal' %}selected{% endif %}>Batal</option>
+                </select>
+            </div>
+
+            <div class="flex mt-6 text-sm">
+                <button type="submit" class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    Edit Pendaftaran
+                </button>
+                <a href="{{ url_for('admin.manage_pendaftaran') }}" class="ml-4 px-5 py-3 font-medium leading-5 text-gray-700 dark:text-gray-400 transition-colors duration-150 border border-gray-300 rounded-lg active:bg-gray-300 hover:bg-gray-100 dark:bg-gray-800 focus:outline-none focus:shadow-outline-gray">
+                    Batal
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

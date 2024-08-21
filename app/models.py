@@ -90,7 +90,7 @@ class Pendaftaran(db.Model):
     mahasiswa_id = db.Column(db.Integer, db.ForeignKey('mahasiswa.id'), nullable=False)
     mata_kuliah_id = db.Column(db.Integer, db.ForeignKey('mata_kuliah.id'), nullable=False)
     tanggal_pendaftaran = db.Column(db.DateTime, default=datetime.utcnow)
-    nilai_akhir = db.Column(db.String(2))
+    nilai_akhir = db.Column(db.String(4))
     status = db.Column(db.Enum('aktif', 'selesai', 'batal', name='status_enum'), nullable=False)
 
 # Model untuk tabel `jadwal`
