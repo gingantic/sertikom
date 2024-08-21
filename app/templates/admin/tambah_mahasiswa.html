@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Mahasiswa{% endblock %}
+
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Tambah Mahasiswa</h1>
+    <form action="{{ url_for('admin.add_user') }}" method="POST">
+        <input type="hidden" name="peran" value="mahasiswa">
+        <div class="mb-4">
+            <label for="nama_pengguna" class="block text-sm font-medium text-gray-700">Nama Pengguna</label>
+            <input type="text" name="nama_pengguna" id="nama_pengguna" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="kata_sandi" class="block text-sm font-medium text-gray-700">Kata Sandi</label>
+            <input type="password" name="kata_sandi" id="kata_sandi" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" name="email" id="email" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="nim" class="block text-sm font-medium text-gray-700">NIM</label>
+            <input type="text" name="nim" id="nim" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
+            <input type="text" name="nama" id="nama" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="tanggal_lahir" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
+            <input type="date" name="tanggal_lahir" id="tanggal_lahir" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="jenis_kelamin" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+            <select name="jenis_kelamin" id="jenis_kelamin" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                <option value="pria">Pria</option>
+                <option value="wanita">Wanita</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
+            <textarea name="alamat" id="alamat" required class="mt-1 block w-full border border-gray-300 rounded-md p-2"></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="nomor_telepon" class="block text-sm font-medium text-gray-700">Nomor Telepon</label>
+            <input type="text" name="nomor_telepon" id="nomor_telepon" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="tahun_masuk" class="block text-sm font-medium text-gray-700">Tahun Masuk</label>
+            <input type="number" name="tahun_masuk" id="tahun_masuk" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <input type="hidden" name="peran" value="mahasiswa">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Tambah Mahasiswa</button>
+    </form>
+</div>
+{% endblock %}
